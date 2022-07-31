@@ -7,6 +7,7 @@
 
 # COMMAND ----------
 
+import argparse
 import requests
 from pyspark.sql import functions as F
 
@@ -76,4 +77,15 @@ def get_new_pro_matches(**kwargs):
 
 # COMMAND ----------
 
-get_new_pro_matches()
+if __name__ == "__main__":
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=["new", "history"])
+
+    args = parser.parse_args()
+
+    if args.mode == "new":
+        get_new_pro_matches()
+        
+    elif args.mode == "history":
+        get_history_pro_matches()
