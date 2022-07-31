@@ -77,15 +77,10 @@ def get_new_pro_matches(**kwargs):
 
 # COMMAND ----------
 
-if __name__ == "__main__":
-    
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["new", "history"])
+mode = dbutils.widgets.get("mode")
 
-    args = parser.parse_args()
+if mode == "new":
+    get_new_pro_matches()
 
-    if args.mode == "new":
-        get_new_pro_matches()
-        
-    elif args.mode == "history":
-        get_history_pro_matches()
+elif mode == "history":
+    get_history_pro_matches()
