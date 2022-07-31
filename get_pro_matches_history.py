@@ -77,15 +77,13 @@ def get_new_pro_matches(**kwargs):
 
 # COMMAND ----------
 
-if __name__ == "__main__":
-    
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["new", "history"])
+parser = argparse.ArgumentParser()
+parser.add_argument("mode", choices=["new", "history"])
 
-    args = parser.parse_args()
+args = parser.parse_args()
 
-    if args.mode == "new":
-        get_new_pro_matches()
-        
-    elif args.mode == "history":
-        get_history_pro_matches()
+if args.mode == "new":
+    get_new_pro_matches()
+
+elif args.mode == "history":
+    get_history_pro_matches()
